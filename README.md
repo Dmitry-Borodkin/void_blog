@@ -1,7 +1,7 @@
 # The Void Programming Language Blog
 
 
-- 2023.10.28 [Acquaintance](2023/10-28-acquaintance.md)
+- 2023.10.29 [Acquaintance](2023/10-29-acquaintance.md)
 
 
 

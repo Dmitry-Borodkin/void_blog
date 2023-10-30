@@ -80,7 +80,7 @@ Well, okay...
 But then for this we will have to build a “Model of the Model of the Language” in the compiler...
 And continue this further and further...
 
-No, something is somehow completely bad here...
+No, something is somehow completely wrong here...
 
 
 #### How is this solved in natural languages?
@@ -95,14 +95,38 @@ It contains only the most basic "load-bearing structures" of the language.
 - The language itself “lives” in its specific subject area.
 - But as for reflection, this remains unclear to me...
 
-It's not so mach for linguistics, but I still found something interesting...
+Not much on linguistics, but I still found something interesting...
 
 
 #### Idea: separate the language from the meta-programming tool...
 
-...
+It turns out that my whole problem arises due to the fact that
+I am trying to “stuff” a meta-programming tool into the language itself...
+
+Wonderful! Let's just not do that... And what will we get?
+
+- “Simply” a language that should be able to invoke at least something.
+- "Simply" a meta-programming library that is accessible from within the language.
+
+That's all!.. Well, almost...
+
+That is, we can make the language the way we want - minimalistic and low-level.
+The main thing is that it must call our meta-programming library.
+And this library may be in the compiler.
+Even better: the compiler itself can become a library! Everything is already there!
+You just need to "inject" a good dose of *Extensibility* there...
+
+All that remains is to figure out how to “technically” pull this all off...
+
 
 #### Looking for a suitable platform.
+
+
+
+
+
+
+
 
 ...
 

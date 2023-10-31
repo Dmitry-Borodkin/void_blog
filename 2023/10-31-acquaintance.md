@@ -121,18 +121,45 @@ All that remains is to figure out how to “technically” pull this all off...
 
 #### Looking for a suitable platform.
 
+In principle, it is clear that almost any existing “virtual machine” of any (if any)
+existing developed programming language can be suitable as a platform for such a system:
+[JVM](https://en.wikipedia.org/wiki/Java_virtual_machine),
+[CLR](https://en.wikipedia.org/wiki/Common_Language_Runtime),
+[LLVM](https://en.wikipedia.org/wiki/LLVM), etc.
+You can start from some interpreted languages: Python, JavaScript, ~~BrainF*ck~~ ...
+You can write your own interpreter. You can even take kinda WASM...
+
+The main thing is that we need to be able to build
+“object” code “on the fly” and be able to immediately execute it.
+Call functions of the compiler itself (i.e., meta-programming library)
+and thus “build” the compiler (and language) to an arbitrarily high level...
+Incrementally, layer by layer.
+
+My desire to make the language low-level and as close to the hardware as possible
+leads to the rejection of options based on interpretation.
+
+The requirement for a minimalistic language also allows us
+to discard options with "over-regulated" memory management...
+
+The minimalism of the language is dictated by the desire to gain maximum freedom for future extensions.
+This, in turn, entails transferring the “center of gravity” of the functionality from the language to the compiler
+(i.e. "library").
 
 
+So we need a "rich platform"...
 
-
-
-
-
-...
 
 #### Decision-making...
 
-...
+As a result, it turns out that there is not much to choose from. We get LLVM.
+
+With all its shortcomings, at the moment, for my purposes, LLVM has no competitors...
+
+Well... After a couple of months of experimenting,
+I seemed to have gotten the hang of it a little
+and began to understand how to tame these beasts...
+I mean both of them: LLVM and Void. What a “sweet couple”...
+
 
 #### Architecture sketch.
 

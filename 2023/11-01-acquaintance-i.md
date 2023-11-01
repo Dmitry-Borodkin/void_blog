@@ -33,7 +33,7 @@ So that you can do something like this:
     - Extend it to C++.
     - Add Borrow Checker like Rust.
     - Above this, place a thick layer of Haskell-style monads with transformers.
-    - And decorate everything with JavaScript libraries on BrainF*ck...
+    - And decorate everything with JavaScript libraries in BrainF*ck...
 
 - It is necessary to be able to create "third-party" language extensions.
 So that these extensions can be included in "third-party" libraries and applications.

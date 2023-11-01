@@ -1,4 +1,4 @@
-# Acquaintance.
+# Acquaintance I.
 
 
 ### About the author.
@@ -158,18 +158,12 @@ With all its shortcomings, at the moment, for my purposes, LLVM has no competito
 Well... After a couple of months of experimenting,
 I seemed to have gotten the hang of it a little
 and began to understand how to tame these beasts...
-I mean both of them: LLVM and Void. What a “sweet couple”...
+I mean both of them: LLVM and Void.
+
+What a “sweet couple”...
 
 
-#### Architecture sketch.
+---
 
-...
-
-
-### About the project.
-
-...
-
-
-
+2023.10.28 - 2023.11.01
 

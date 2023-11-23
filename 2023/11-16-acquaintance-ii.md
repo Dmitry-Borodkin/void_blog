@@ -46,7 +46,7 @@ The example of the Rust language shows that this is quite achievable...
 - The main emphasis is on the simplest and most understandable solutions:
 
     - “You can’t optimize something that doesn’t exist.”
-    - No "exotic" stuff. Minimum "tricks"...
+    - Nothing "esoteric". Minimum "tricks"...
     - At the beginning, an absolute minimum of diagnostics...
 
 - ...
@@ -70,9 +70,55 @@ As you can see in the initial commit, everything started out quite modestly:
 
 But at the same time:
 
+- Quite advanced `v_import()` in Python style with saving compiled units.
+
+- Ability to call arbitrary functions from libc, LLVM, etc.
+
+- The technical ability to create your own functions using LLVM and call them via JIT.
+
+Next, heading towards a full-fledged “Starter”:
+
+- Using `pyclibrary`, a declaration of the main subset of the LLVM-C API is generated.
+
+- `v_peg` is created - an extensible parsing subsystem based on PEG machinery:
+
+    - Three components:
+
+        - "Parsers" - a library of PEG "parser-combinators" (with "actions").
+
+        - "Grammar" - a container of named parsers/actions etc.
+
+        - "Context" - contains grammar, input stream, buffers, "memo", etc.
+
+    - Allows you to dynamically rebuild the grammar (even during parsing).
+
+    - Actions can influence parsing, and thus allow you to make parsing as complex and context-sensitive as you like.
+
+    - Unicode (UTF-8) input stream support.
+
+- `v_ast` is developed - an extensible abstract syntax subsystem:
+
+    - Minimalistic class hierarchy supporting the Starter Language.
+
+    - Special generic nodes in the AST hierarchy through which new types of nodes can be dynamically added...
+
+    - Generic lists of AST elements.
+
+- `v_visitor` is created - an extensible AST handler:
+
+    - Container of methods for processing AST nodes.
+
+    - Allows you to dynamically rebuild the contents of the container.
+
+    - Allows you to build a compiler for Starter Language.
+
+- `v_target` is created - a subsystem of compilation contexts:
+
+    - Global and local contexts.
+
+    - `voidc` and `target` ...
+
 - ...
-
-
 
 
 #### "How it's going."
@@ -83,5 +129,5 @@ But at the same time:
 
 ---
 
-2023.11.16 - 2023.11.19
+2023.11.16 - 2023.11.23
 

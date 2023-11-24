@@ -49,7 +49,7 @@ The example of the Rust language shows that this is quite achievable...
     - Nothing "esoteric". Minimum "tricks"...
     - At the beginning, an absolute minimum of diagnostics...
 
-- ...
+- In the future, the project should provide for the possibility of “seamless” integration with the C/C++ “ecosystem”.
 
 
 #### "How it started."
@@ -102,7 +102,7 @@ Next, heading towards a full-fledged “Starter”:
 
     - Special generic nodes in the AST hierarchy through which new types of nodes can be dynamically added...
 
-    - Generic lists of AST elements.
+    - Generic lists of AST elements (our greetings to "homoiconicity").
 
 - `v_visitor` is created - an extensible AST handler:
 
@@ -118,16 +118,107 @@ Next, heading towards a full-fledged “Starter”:
 
     - `voidc` and `target` ...
 
-- ...
+    - Support for "identifier tables" ...
+
+    - Support for the current compilation state.
+
+    - Support for the stack of imports...
+
+- `v_util` is created - a subsystem for working with `voidc` C++ objects...
+
+
+All these tools have the necessary API to call from under Void...
 
 
 #### "How it's going."
 
+Main stages of project development to date:
+
+- Development of basic constructions:
+
+  - The `function_hack` - a relatively comfortable opportunity to create functions:
+
+    - Allows you to syntactically construct a function “in two units”:
+
+      - The first unit creates a function "header" and temporarily "overrides" the compiler of the next unit.
+
+      - The second unit represents the completion of the function body...
+
+    - This “hack” was used until it became possible to build functions “normally”...
+
+  - Flow control statements: `if-then-else`, `block`, `loop`.
+
+  - Minimalistic arithmetic ct-intrinsics: `v_binop`, `v_icmp`, `v_fcmp`.
+
+  - The `grammar` statement - a DSL for grammar development.
+
+  - `switch` statement, `v_malloc` intrinsic...
+
+  - Creation of own Void's type system. This turned out to be absolutely necessary for constructing C-style expressions.
+
+    - The "signedness" of integers must be "signaled" in the type system.
+
+    - References as a new "kind of pointers" to support C-style assignments.
+
+  - C-style expressions with some "twists":
+
+    - `:=` as an assignment operator.
+
+    - "Chained" relation operators, like in Python...
+
+    - Support of LLVM's vectors "out of the box".
+
+    - Expressions for types.
+
+  - Basic `defer` statement...
+
+  - Finally, some "normal" syntax for declarations/definitions...
+
+- Creation of a system of language levels. Form "Level 0.0" and "Level 0.1".
+
+- Level 0.2 - "C on steroids"...
+
+- Level 0.3 - Kinda, objects...
+
 ...
 
+
+#### Some theses about plans:
+
+- First of all - documentation. It's like "breathing".
+
+- Next - finish Level-0.3.
+
+    - Coercions. This is what is in the works right now.
+
+    - Namespaces. In C++ and/or Python style.
+
+- This will allow us to move development towards two things:
+
+    - Standard Library:
+
+        - Strings like in C++
+        - "Any" like in C++. (RTTI, etc.)
+        - Smart pointers
+        - Containers
+
+    - Level-0.4:
+
+        - Variants/matching (ADT)
+        - Generic types
+        - Type inference (maybe later?)
+
+- Kind of satellite projects:
+
+    - "C-fusion" and/or "Cxx-fusion" (Tools for "seamless" "integration" of third-party libraries with help of Clang "tooling").
+
+    - "Fuse" some interesting libraries: GMP, GTK, Qt, Cairo, OpenGl, etc.
+
+
+...
 
 
 ---
 
-2023.11.16 - 2023.11.23
+2023.11.16 - 2023.11.24
 

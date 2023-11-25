@@ -71,9 +71,7 @@ As you can see in the initial commit, everything started out quite modestly:
 But at the same time:
 
 - Quite advanced `v_import()` in Python style with saving compiled units.
-
 - Ability to call arbitrary functions from libc, LLVM, etc.
-
 - The technical ability to create your own functions using LLVM and call them via JIT.
 
 Next, heading towards a full-fledged “Starter”:
@@ -85,43 +83,31 @@ Next, heading towards a full-fledged “Starter”:
     - Three components:
 
         - "Parsers" - a library of PEG "parser-combinators" (with "actions").
-
         - "Grammar" - a container of named parsers/actions etc.
-
         - "Context" - contains grammar, input stream, buffers, "memo", etc.
 
     - Allows you to dynamically rebuild the grammar (even during parsing).
-
     - Actions can influence parsing, and thus allow you to make parsing as complex and context-sensitive as you like.
-
     - Unicode (UTF-8) input stream support.
 
 - `v_ast` is developed - an extensible abstract syntax subsystem:
 
     - Minimalistic class hierarchy supporting the Starter Language.
-
     - Special generic nodes in the AST hierarchy through which new types of nodes can be dynamically added...
-
     - Generic lists of AST elements (our greetings to "homoiconicity").
 
 - `v_visitor` is created - an extensible AST handler:
 
     - Container of methods for processing AST nodes.
-
     - Allows you to dynamically rebuild the contents of the container.
-
     - Allows you to build a compiler for Starter Language.
 
 - `v_target` is created - a subsystem of compilation contexts:
 
     - Global and local contexts.
-
     - `voidc` and `target` ...
-
     - Support for "identifier tables" ...
-
     - Support for the current compilation state.
-
     - Support for the stack of imports...
 
 - `v_util` is created - a subsystem for working with `voidc` C++ objects...
@@ -141,33 +127,25 @@ Main stages of project development to date:
     - Allows you to syntactically construct a function “in two units”:
 
       - The first unit creates a function "header" and temporarily "overrides" the compiler of the next unit.
-
       - The second unit represents the completion of the function body...
 
     - This “hack” was used until it became possible to build functions “normally”...
 
   - Flow control statements: `if-then-else`, `block`, `loop`.
-
   - Minimalistic arithmetic ct-intrinsics: `v_binop`, `v_icmp`, `v_fcmp`.
-
   - The `grammar` statement - a DSL for grammar development.
-
   - `switch` statement, `v_malloc` intrinsic...
 
   - Creation of own Void's type system. This turned out to be absolutely necessary for constructing C-style expressions.
 
     - The "signedness" of integers must be "signaled" in the type system.
-
     - References as a new "kind of pointers" to support C-style assignments.
 
   - C-style expressions with some "twists":
 
     - `:=` as an assignment operator.
-
     - "Chained" relation operators, like in Python...
-
     - Support of LLVM's vectors "out of the box".
-
     - Expressions for types.
 
   - Basic `defer` statement...
@@ -176,11 +154,22 @@ Main stages of project development to date:
 
 - Creation of a system of language levels. Form "Level 0.0" and "Level 0.1".
 
-- Level 0.2 - "C on steroids"...
+- Level 0.2 - "C on steroids":
+
+  - Comprehensive numeric literals;
+  - Sophisticated control flow constuctions: "while", "for", extended "if then else" and "switch";
+  - Aggregate "initializations";
+  - "Simple" overloading of operators;
+  - "Projections" (functions with syntax `a.something`);
+  - Simple structures with named fields;
+  - "Mangling" (fancy function names to help overloading/projections);
+  - Function inlining;
+  - Unions (like in C).
 
 - Level 0.3 - Kinda, objects...
 
-...
+  - Objects in a style similar to C++, only simpler and “lighter”...
+  - ...
 
 
 #### Some theses about plans:
@@ -197,28 +186,25 @@ Main stages of project development to date:
 
     - Standard Library:
 
-        - Strings like in C++
-        - "Any" like in C++. (RTTI, etc.)
-        - Smart pointers
-        - Containers
+        - Strings like in C++.
+        - "Any" like in C++ (RTTI, etc.).
+        - Smart pointers.
+        - Containers.
 
     - Level-0.4:
 
-        - Variants/matching (ADT)
-        - Generic types
-        - Type inference (maybe later?)
+        - Variants/matching (ADT).
+        - Generic types.
+        - Type inference (maybe later?).
 
 - Kind of satellite projects:
 
-    - "C-fusion" and/or "Cxx-fusion" (Tools for "seamless" "integration" of third-party libraries with help of Clang "tooling").
+    - `C-fusion` and/or `Cxx-fusion` (Tools for "seamless" "integration" of third-party libraries with help of Clang "tooling").
 
     - "Fuse" some interesting libraries: GMP, GTK, Qt, Cairo, OpenGl, etc.
 
 
-...
-
-
 ---
 
-2023.11.16 - 2023.11.24
+2023.11.16 - 2023.11.25
 
